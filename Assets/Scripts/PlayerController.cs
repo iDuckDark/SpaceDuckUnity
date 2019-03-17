@@ -26,6 +26,9 @@ public class PlayerController : MonoBehaviour
         {
             nextFire = Time.time + fireRate;
             GameObject clone = Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+            //add audio for Unity 5
+            AudioSource audio = GetComponent<AudioSource>();
+            audio.Play();
         }
 
     }
