@@ -10,22 +10,27 @@ public class GameController : MonoBehaviour
     public int hazardCount;
     public float startWait, spawnWait, waveWait;
 
-    public Text scoreText;
+    public Text scoreText, restartText, gameOverText;
     private int score;
+    private bool gameOver; //restart;
 
     // Start is called before the first frame update
     void Start()
     {
+        gameOver = false;
+        restartText.text = gameOverText.text ="";
+
         score = 0;
-        scoreText.alignment = TextAnchor.UpperLeft;
+        //scoreText.alignment = TextAnchor.UpperLeft;
         UpdateScore();
         StartCoroutine(SpawnWaves());
     }
 
+
     IEnumerator SpawnWaves()
     {
         yield return new WaitForSeconds(startWait);
-        while (true)
+        while (!gameOver)
         {
             for (int i = 0; i < hazardCount; i++)
             {
@@ -35,6 +40,7 @@ public class GameController : MonoBehaviour
                 yield return new WaitForSeconds(spawnWait);
             }
             yield return new WaitForSeconds(waveWait);
+  
         }
     }
 
@@ -52,6 +58,27 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+ 
+        //For Desktop Players
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            //Obselete
+            //Application.LoadLevel(Application.loadedLevel);
+            //Replaced with this:
+            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        }
+        //Quit game
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
 
+    }
+
+    public void GameOver()
+    {
+        restartText.text = "Press R for Restart";
+        gameOverText.text = "Game Over!";
+        gameOver = true;
     }
 }

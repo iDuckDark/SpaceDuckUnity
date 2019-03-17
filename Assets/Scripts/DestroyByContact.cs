@@ -34,9 +34,10 @@ public class DestroyByContact : MonoBehaviour
         // make explosion effects
         GameObject clone = Instantiate(explosion, transform.position, transform.rotation);
 
-      
+        //Destroy player
         if(other.tag == "Player") {
-            GameObject pClone = Instantiate(playerExplosion, other.transform.position, other.transform.rotation);       
+            GameObject pClone = Instantiate(playerExplosion, other.transform.position, other.transform.rotation);
+            gameController.GameOver();       
         }
 
         gameController.AddScore(scoreValue);
@@ -44,8 +45,6 @@ public class DestroyByContact : MonoBehaviour
         Destroy(other.gameObject);
         Destroy(gameObject); //the asteriod and all its children
     }
-
-
 
 
     // Update is called once per frame
