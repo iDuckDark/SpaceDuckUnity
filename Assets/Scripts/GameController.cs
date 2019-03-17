@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
@@ -9,10 +10,23 @@ public class GameController : MonoBehaviour
     public int hazardCount;
     public float startWait, spawnWait, waveWait;
 
+    public Text scoreText;
+    private int score;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        score = 0;
+        scoreText.alignment = TextAnchor.UpperLeft;
+        UpdateScore();
+        StartCoroutine(SpawnWaves());
+    }
+
     IEnumerator SpawnWaves()
     {
         yield return new WaitForSeconds(startWait);
-        while (true) {
+        while (true)
+        {
             for (int i = 0; i < hazardCount; i++)
             {
                 Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
@@ -24,10 +38,15 @@ public class GameController : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void AddScore(int newScoreValue)
     {
-        StartCoroutine(SpawnWaves());
+        score += newScoreValue;
+        UpdateScore();
+    }
+
+    void UpdateScore()
+    {
+        scoreText.text = "Score: " + score;
     }
 
     // Update is called once per frame
