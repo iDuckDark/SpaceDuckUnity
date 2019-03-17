@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     public float fireRate;
     private float nextFire;
 
+    Quaternion calibrateQuat;
+
     private void Update()
     {
         if (Input.GetButton("Fire1") && Time.time > nextFire)
@@ -33,14 +35,33 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void CalibrateAccelerometer()
+    {
+        Vector3 accelerationSnapshot = Input.acceleration;
+        Quaternion rotateQuat = Quaternion.FromToRotation(new Vector3(0.0f, 0.0f, -1.0f), accelerationSnapshot);
+        calibrateQuat = Quaternion.Inverse(rotateQuat);
+    }
+
+    private Vector3 FixAcceleration(Vector3 acc)
+    {
+        return calibrateQuat * acc;
+    }
+
+
     private void FixedUpdate()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+        // Desktop
+        //float moveHorizontal = Input.GetAxis("Horizontal");
+        //float moveVertical = Input.GetAxis("Vertical");
+        //Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
 
+        //Mobile
+        Vector3 accRaw = Input.acceleration;
+        Vector3 acc = FixAcceleration(accRaw);
+        Vector3 movement = new Vector3(acc.x, 0.0f, acc.y);
+
+        //RigidBody logic
         Rigidbody rigidbody = GetComponent<Rigidbody>();
-
-        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
         rigidbody.velocity = movement * speed;
 
         rigidbody.position = new Vector3(
