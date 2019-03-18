@@ -11,16 +11,15 @@ public class Boundary
 public class PlayerController : MonoBehaviour
 {
 
-    public float speed;
-    public float tilt;
+    public float speed, tilt, fireRate;
+    private float nextFire;
     public Boundary boundary;
 
     public GameObject shot;
     public Transform shotSpawn;
-    public float fireRate;
-    private float nextFire;
 
-    Quaternion calibrateQuat;
+    private Quaternion calibrateQuat;
+    public SimpleTouchPad simpleTouchPad; 
 
     private void Update()
     {
@@ -47,7 +46,6 @@ public class PlayerController : MonoBehaviour
         return calibrateQuat * acc;
     }
 
-
     private void FixedUpdate()
     {
         // Desktop
@@ -55,10 +53,14 @@ public class PlayerController : MonoBehaviour
         //float moveVertical = Input.GetAxis("Vertical");
         //Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
 
-        //Mobile
-        Vector3 accRaw = Input.acceleration;
-        Vector3 acc = FixAcceleration(accRaw);
-        Vector3 movement = new Vector3(acc.x, 0.0f, acc.y);
+        //Mobile Accelerometer
+        //Vector3 accRaw = Input.acceleration;
+        //Vector3 acc = FixAcceleration(accRaw);
+        //Vector3 movement = new Vector3(acc.x, 0.0f, acc.y);
+
+        //Mobile TouchPad
+        Vector2 direction = simpleTouchPad.GetDirection();
+        Vector3 movement = new Vector3(direction.x, 0.0f, direction.y);
 
         //RigidBody logic
         Rigidbody rigidbody = GetComponent<Rigidbody>();
