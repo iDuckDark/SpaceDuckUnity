@@ -19,11 +19,16 @@ public class PlayerController : MonoBehaviour
     public Transform shotSpawn;
 
     private Quaternion calibrateQuat;
-    public SimpleTouchPad simpleTouchPad; 
+    public SimpleTouchPad simpleTouchPad;
+    public SimpleTouchAreaButton simpleTouchAreaButton;
 
     private void Update()
     {
-        if (Input.GetButton("Fire1") && Time.time > nextFire)
+        // Desktop
+        //if (Input.GetButton("Fire1") && Time.time > nextFire)
+
+        // Mobile
+        if (simpleTouchAreaButton.CanFire() && Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
             GameObject clone = Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
@@ -73,6 +78,4 @@ public class PlayerController : MonoBehaviour
 
         rigidbody.rotation = Quaternion.Euler(0.0f, 0.0f, rigidbody.velocity.x * -tilt);
     }
-
-
 }
