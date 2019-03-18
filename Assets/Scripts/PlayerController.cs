@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour{
             this.setNextFire();
             this.CloneShots();
             this.PlayAudio();
+            //StartCoroutine(this.PlayAudio());
         }
     }
 
@@ -42,6 +43,15 @@ public class PlayerController : MonoBehaviour{
 
     private void PlayAudio() {
         GetComponent<AudioSource>().Play();
+    }
+
+    IEnumerator PlayPauseAudio() {
+        while(true){
+            GetComponent<AudioSource>().Play();
+            yield return new WaitForSeconds(1.5f);
+            GetComponent<AudioSource>().Pause();
+            yield return new WaitForSeconds(2.5f);
+        }
     }
 
     private void CalibrateAccelerometer() {
