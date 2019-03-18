@@ -5,27 +5,24 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    public GameObject hazard;
+    public GameObject hazard, restartButton;
     public Vector3 spawnValues;
     public int hazardCount;
     public float startWait, spawnWait, waveWait;
 
-    public Text scoreText, restartText, gameOverText;
+    public Text scoreText, gameOverText;
     private int score;
-    private bool gameOver; //restart;
+    private bool gameOver, restart;
 
     // Start is called before the first frame update
     void Start()
     {
-        gameOver = false;
-        restartText.text = gameOverText.text ="";
-
+        gameOverText.text ="";
+        restartButton.SetActive(gameOver = restart = false);
         score = 0;
-        //scoreText.alignment = TextAnchor.UpperLeft;
         UpdateScore();
         StartCoroutine(SpawnWaves());
     }
-
 
     IEnumerator SpawnWaves()
     {
@@ -58,27 +55,23 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
- 
         //For Desktop Players
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            //Obselete
-            //Application.LoadLevel(Application.loadedLevel);
-            //Replaced with this:
-            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
-        }
+        if (Input.GetKeyDown(KeyCode.R)) RestartGame();
+        
         //Quit game
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
-
+        if(Input.GetKeyDown(KeyCode.Escape)) Application.Quit();
     }
 
     public void GameOver()
     {
-        restartText.text = "Press R for Restart";
+        restartButton.SetActive(restart = gameOver = true);
         gameOverText.text = "Game Over!";
-        gameOver = true;
+    }
+
+    public void RestartGame()
+    {
+        //Obselete -> //Application.LoadLevel(Application.loadedLevel);
+        //Replaced with this:
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 }

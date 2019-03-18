@@ -30,7 +30,7 @@ public class SimpleTouchAreaButton : MonoBehaviour, IPointerUpHandler, IPointerD
 
     private bool comparePointerID(PointerEventData data)
     {
-        return data.pointerId == this.pointerID;
+        return this.pointerID == data.pointerId;
     }
 
     public bool CanFire()

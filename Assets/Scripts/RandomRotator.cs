@@ -5,16 +5,10 @@ using UnityEngine;
 public class RandomRotator : MonoBehaviour
 {
     public float tumble;
-    // Start is called before the first frame update
+
     void Start()
     {
         Rigidbody rigidbody = GetComponent<Rigidbody>();
-        rigidbody.angularVelocity = Random.insideUnitSphere * tumble;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        rigidbody.angularVelocity = Random.insideUnitSphere * this.tumble;
     }
 }

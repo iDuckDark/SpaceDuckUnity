@@ -1,9 +1,7 @@
 ﻿<Properties StartupConfiguration="{3C993B8A-4C6F-ECAD-72AD-AF30550F765C}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/SimpleTouchAreaButton.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameController.cs">
     <Files>
-      <File FileName="Assets/Scripts/GameController.cs" Line="14" Column="12" />
-      <File FileName="Assets/Scripts/PlayerController.cs" Line="16" Column="30" />
-      <File FileName="Assets/Scripts/SimpleTouchAreaButton.cs" Line="10" Column="5" />
+      <File FileName="Assets/Scripts/GameController.cs" Line="25" Column="27" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

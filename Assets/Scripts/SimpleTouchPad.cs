@@ -38,7 +38,6 @@ public class SimpleTouchPad : MonoBehaviour, IPointerUpHandler, IPointerDownHand
             Vector2 currentPosition = data.position;
             Vector2 directionRaw = currentPosition - origin;
             this.direction = directionRaw.normalized;
-            Debug.Log("OnDrag Direction :" + this.direction);
         }
     }
 
