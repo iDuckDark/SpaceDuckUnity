@@ -6,38 +6,55 @@ using UnityEngine.EventSystems;
 
 public class SimpleTouchPad : MonoBehaviour, IPointerUpHandler, IPointerDownHandler, IDragHandler
 {
-    private Vector2 origin, direction, smoothDirection;
     public float smoothing;
+
+    private Vector2 origin, direction, smoothDirection;
+    private bool touched;
+    private int pointerID;
 
     void Awake()
     {
-       this.direction = Vector2.zero;
+        this.direction = Vector2.zero;
+        this.touched = false;
     }
 
     public void OnPointerDown(PointerEventData data)
     {
-        //Set our start Point
-        origin = data.position; 
+        if (!touched)
+        {
+            touched = true;
+            this.pointerID = data.pointerId;
+            //Set our start Point
+            origin = data.position;
+        }
     }
 
     public void OnDrag(PointerEventData data)
     {
-        //Compare difference between our start point and current point position
-        Vector2 currentPosition = data.position;
-        Vector2 directionRaw = currentPosition - origin;
-        this.direction = directionRaw.normalized;
-        Debug.Log("OnDrag Direction :"+ this.direction);
+        // Prevent multiple touches
+        if (comparePointerID(data))
+        {
+            //Compare difference between our start point and current point position
+            Vector2 currentPosition = data.position;
+            Vector2 directionRaw = currentPosition - origin;
+            this.direction = directionRaw.normalized;
+            Debug.Log("OnDrag Direction :" + this.direction);
+        }
     }
 
     public void OnPointerUp(PointerEventData data)
     {
-        //Resets Everything
-        this.direction = Vector2.zero;
+        if (comparePointerID(data))
+            this.direction = Vector2.zero; //Resets Everything
+    }
+
+    private bool comparePointerID(PointerEventData data)
+    {
+        return data.pointerId == this.pointerID;
     }
 
     public Vector2 GetDirection()
     {
-        smoothDirection = Vector2.MoveTowards(smoothDirection, this.direction, smoothing);
-        return smoothDirection;
+        return smoothDirection = Vector2.MoveTowards(smoothDirection, this.direction, smoothing);
     }
 }
