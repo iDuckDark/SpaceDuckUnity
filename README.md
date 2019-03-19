@@ -3,7 +3,7 @@
 iOS AppStore Link: coming soon!
 
 <p align="center">
-<img style="vertical-align:middle" height="15%" width="15%" src="https://github.com/iDuckDark/Tappy-Fingers-iOS/blob/master/Screenshots/Jan%202019%20/rounded/icon.png?raw=true">
+<img style="vertical-align:middle" height="15%" width="15%" src="https://github.com/iDuckDark/SpaceDuckUnity/blob/master/Screenshots/Rounded%20Corners/icon.png?raw=true">
 <p>
   
   
