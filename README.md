@@ -1,7 +1,7 @@
 # SpaceDuckUnity
 
-iOS AppStore Link: coming soon!
-
+iOS AppStore Link: coming soon!  
+WebGL: https://iduckdark.github.io/SpaceDuckUnity/
 <p align="center">
 <img style="vertical-align:middle" height="15%" width="15%" src="https://github.com/iDuckDark/SpaceDuckUnity/blob/master/Screenshots/Rounded%20Corners/icon.png?raw=true">
 <p>
