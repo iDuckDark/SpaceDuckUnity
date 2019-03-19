@@ -8,7 +8,7 @@ iOS AppStore Link: coming soon!
   
   
 <p align="center">
-A game that requires tapping on the screen as many times you can in 10 seconds with Google Admob
+A cross platform 3D arcade style shooter made with Unity and C#, compatible with WebGL and iOS
 <p>
 
 <p align="center" float="left">
