@@ -13,11 +13,11 @@ A cross platform 3D arcade style shooter made with Unity and C#, compatible with
 
 <p align="center" float="left">
   
-  <img height="25%" width="25%" src="https://github.com/iDuckDark/Tappy-Fingers-iOS/blob/master/Screenshots/Jan%202019%20/rounded/output-onlinepngtools.png?raw=true">
+  <img height="25%" width="25%" src="https://github.com/iDuckDark/SpaceDuckUnity/blob/master/Screenshots/Rounded%20Corners/1.png?raw=true">
   
-  <img height="25%" width="25%" src="https://github.com/iDuckDark/Tappy-Fingers-iOS/blob/master/Screenshots/Jan%202019%20/rounded/output-onlinepngtools%20copy.png?raw=true">
+  <img height="25%" width="25%" src="https://github.com/iDuckDark/SpaceDuckUnity/blob/master/Screenshots/Rounded%20Corners/2.png?raw=true">
   
-  <img height="25%" width="25%" src="https://github.com/iDuckDark/Tappy-Fingers-iOS/blob/master/Screenshots/Jan%202019%20/rounded/output-onlinepngtools%20copy%202.png?raw=true">
+  <img height="25%" width="25%" src="https://github.com/iDuckDark/SpaceDuckUnity/blob/master/Screenshots/Rounded%20Corners/4.png?raw=true">
   
 </p>
   
